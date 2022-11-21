@@ -58,6 +58,8 @@ docker build -t investment-tracker .
 docker compose up
 ```
 
+**If you have issues building the app (e.g. SunCertPathBuilderException is thrown), you might consider using the [pre-packaged jar file](https://github.com/xa49/investment-tracker/releases/tag/testing-the-app) to build the Docker image.** 
+
 ## Usage
 
 The portfolio value and investment returns depend on a large number of parameters. Among others:
