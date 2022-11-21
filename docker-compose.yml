@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  investment-tracker-mariadb:
+    image: mariadb
+    ports:
+      - '13306:3306'
+    environment:
+      MYSQL_DATABASE: investment_tracker
+      MYSQL_USER: investment_tracker_user
+      MYSQL_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: root
+      
+  investment-tracker-app:
+    image: investment-tracker
+    ports:
+      - '8180:8080'
+    depends_on:
+      - investment-tracker-mariadb
+    dns:
+      - 8.8.8.8
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mariadb://investment-tracker-mariadb/investment_tracker'
+      SPRING_DATASOURCE_USERNAME: 'investment_tracker_user'
+      SPRING_DATASOURCE_PASSWORD: 'password'
+    entrypoint: ['./wait-for-it.sh', '-t', '120', 'investment-tracker-mariadb:3306', '--', 'java', 'org.springframework.boot.loader.JarLauncher']

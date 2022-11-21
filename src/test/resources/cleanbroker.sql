@@ -1,0 +1,10 @@
+DELETE FROM tax_details;
+DELETE FROM transactions;
+DELETE FROM investment_asset_records;
+DELETE FROM account_product_associations;
+DELETE FROM brokerage_accounts;
+DELETE FROM broker_product_commissions;
+DELETE FROM broker_transfer_fees;
+DELETE FROM broker_global_fees;
+DELETE FROM broker_products;
+DELETE FROM brokers;
